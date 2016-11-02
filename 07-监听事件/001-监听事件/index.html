@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>监听事件</title>
+</head>
+<body>
+    <div id="app">
+        <button v-on:click="counter +=1">增加1</button>
+        <p>按钮被点击了 {{counter}} 次</p>
+    </div>
+</body>
+</html>
+<script type="text/javascript" src="../../libs/js/vue.js"></script>
+<script type="text/javascript">
+
+    /*
+    * 可以用 v-on 指令监听 DOM 事件来触发一些 JavaScript 代码。
+    * */
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            counter:0
+        }
+    })
+
+</script>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>props</title>
+</head>
+<body>
+<div id="app">
+    <child v-bind:propdata="message" ></child>
+</div>
+</body>
+</html>
+<script type="text/javascript" src="../../libs/js/vue.js"></script>
+<script type="text/javascript">
+    Vue.component('child',{
+        props:['propdata'],
+        template:'<span>{{propData}}</span>'
+    })
+
+    var app = new Vue({
+        el:'#app',
+        data:{
+            message:'通过动态方式往组件传递值需要借助指令：v-bind'
+        }
+    })
+</script>

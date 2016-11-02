@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用render</title>
+</head>
+<body>
+<div id="app">
+    <my-component v-for="msg in messages" :message="msg">
+        hello
+    </my-component>
+</div>
+</body>
+</html>
+<script type="text/javascript" src="../../libs/js/vue.js"></script>
+<script type="text/javascript">
+    Vue.component('my-component', {
+        render: function (createElement) {
+            return createElement(
+                    'p',// tag name 标签名称(p、div、span......)
+                    //this.$slots.default // 子组件中的阵列
+                    this.message  // 子组件中的阵列
+            )
+        },
+        props: {
+            message: {
+                type: String,
+                required: true
+            }
+        }
+    })
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            messages: [
+                '这是一个简单的render实例.',
+                '这是一个简单的render实例..',
+                '这是一个简单的render实例...',
+            ]
+        }
+    })
+
+
+</script>

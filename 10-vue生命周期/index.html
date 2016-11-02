@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <keep-alive>
+        <component v-bind:is="currentView">
+
+        </component>
+    </keep-alive>
+
+    <button v-on:click="switchHomeComponent">home component</button>
+    <button v-on:click="switchPostsComponent">posts component</button>
+    <button v-on:click="switchArchiveComponent">archive component</button>
+
+</div>
+</body>
+</html>
+
+
+<script type="text/javascript" src="../libs/js/vue.js"></script>
+<script type="text/javascript">
+
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            currentView: 'posts'
+        },
+        components: {
+            home: {
+                template: '<p>this is home component</p>'
+            },
+            posts: {
+                template: '<p>this is posts component</p>'
+            },
+            archive: {
+                template: '<p>this is archive component</p>'
+            }
+        },
+        methods: {
+            switchHomeComponent: function () {
+                this.currentView = 'home';
+            },
+            switchPostsComponent: function () {
+                this.currentView = 'posts';
+            },
+            switchArchiveComponent: function () {
+                this.currentView = 'archive';
+            },
+            updateMessage:function () {
+                this.message = '已经更新了'
+            }
+        },
+        beforeCreate:function () {
+            console.log('init');
+        },
+        created:function () {
+            console.log('created');
+        },
+        beforeMount:function () {
+            console.log('beforeMount');
+        },
+        mounted:function () {
+            console.log('mounted');
+        },
+        beforeUpdate:function () {
+            console.log('beforeUpdate');
+        },
+        updated:function () {
+            console.log('updated');
+        },
+        activated:function () {
+            console.log('activated');
+        },
+        deactivated:function () {
+            console.log('deactivated');
+        },
+        beforeDestory:function () {
+            console.log('beforeDestory');
+        },
+        destoryed:function () {
+            console.log('destoryed');
+        }
+    })
+
+
+    /*var vm = new Vue({
+        el: '#app',
+        components: {
+            'simple-component': {
+                template: '<p>this is a simple component</p>'
+            }
+        },
+        beforeCreate:function () {
+            console.log('init');
+        },
+        created:function () {
+            console.log('created');
+        },
+        beforeMount:function () {
+            console.log('beforeMount');
+        },
+        mounted:function () {
+            console.log('mounted');
+        },
+        beforeUpdate:function () {
+            console.log('beforeUpdate');
+        },
+        updated:function () {
+            console.log('updated');
+        },
+        activated:function () {
+            console.log('activated');
+        },
+        deactivated:function () {
+            console.log('deactivated');
+        },
+        beforeDestory:function () {
+            console.log('beforeDestory');
+        },
+        destoryed:function () {
+            console.log('destoryed');
+        }
+    })*/
+</script>

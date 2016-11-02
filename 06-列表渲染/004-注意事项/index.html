@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>重塑数组</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript" src="../../libs/js/vue.js"></script>
+<script type="text/javascript">
+
+
+
+  /*
+  *
+  * 由于 JavaScript 的限制， Vue 不能检测以下变动的数组：
+
+   当你直接设置一个项的索引时，例如： vm.items[indexOfItem] = newValue
+   当你修改数组的长度时，例如： vm.items.length = newLength
+   为了避免第一种情况，以下两种方式将达到像 vm.items[indexOfItem] = newValue 的效果， 同时也将触发状态更新：
+
+   // Vue.set
+   Vue.set(example1.items, indexOfItem, newValue)
+   // Array.prototype.splice`
+   example1.items.splice(indexOfItem, 1, newValue)
+   避免第二种情况，使用 splice：
+
+   example1.items.splice(newLength)
+  * */
+</script>

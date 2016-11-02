@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基础</title>
+</head>
+<body>
+<div id="app">
+    <child prop-data="传递的值" ></child>
+</div>
+</body>
+</html>
+<script type="text/javascript" src="../../libs/js/vue.js"></script>
+<script type="text/javascript">
+    Vue.component('child',{
+        props:['propData'],
+        template:'<span>{{propData}}</span>'
+    })
+
+    var app = new Vue({
+        el:'#app',
+        data:{
+
+        }
+    })
+</script>

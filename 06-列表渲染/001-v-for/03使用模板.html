@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-for</title>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <template v-for="(item,index1) in messages">
+            <li >
+                {{index1}}{{''}}{{item.message}}
+            </li>
+        </template>
+
+    </ul>
+</div>
+</body>
+</html>
+
+
+<script type="text/javascript" src="../../libs/js/vue.js"></script>
+<script type="text/javascript">
+    /*
+     * 在 v-for 块中，我们拥有对父作用域属性的完全访问权限。 v-for 还支持一个可选的第二个参数为当前项的索引
+     */
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            messages:[
+                {message:'cat'},
+                {message:'duck'},
+                {message:'dog'}
+            ]
+        }
+    })
+</script>

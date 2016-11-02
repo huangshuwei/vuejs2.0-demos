@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="parent">
+    <child ref="profile"></child>
+</div>
+</body>
+</html>
+
+<script type="text/javascript" src="../../libs/js/vue.js"></script>
+<script type="text/javascript">
+    var parent = new Vue({
+        el: '#parent',
+        components:{
+            child:{
+                template:'<p>this is child component</p>',
+            }
+        }
+
+    })
+    // 访问子组件
+    var child = parent.$refs.profile;
+
+    console.log(child);
+
+</script>

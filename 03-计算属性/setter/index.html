@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>setter</title>
+</head>
+<body>
+<div id="demo">{{ fullName }}</div>
+</body>
+</html>
+<script type="text/javascript" src="../../libs/js/vue.js"></script>
+<script type="text/javascript">
+
+    /*
+    * 现在在调用 vm.fullName = 'John Doe' 时， setter 会被调用， vm.firstName 和 vm.lastName 也会有相应更新。
+    */
+
+    var vm = new Vue({
+        el: '#demo',
+        data: {
+            firstName: '',
+            lastName: ''
+        },
+        computed: {
+            fullName: {
+                // getter
+                get: function () {
+                    console.log(2)
+                    return this.firstName + ' ' + this.lastName
+                },
+                // setter
+                set: function (newValue) {
+                    console.log(1)
+                    var names = newValue.split(' ')
+                    this.firstName = names[0]
+                    this.lastName = names[names.length - 1]
+                }
+            }
+        }
+    })
+
+
+
+</script>
