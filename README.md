@@ -1,2 +1,2 @@
 # vue-demos
-vuejs demos
+vuejs2.0 demos
