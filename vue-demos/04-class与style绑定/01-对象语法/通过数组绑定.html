@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app1">
+        <div v-bind:class="[activeClass, errorClass]">
+            通过数组绑定1
+        </div>
+    </div>
+
+    <div id="app2">
+        <div v-bind:class="[isActive ? activeClass : '', errorClass]">
+            通过数组绑定2
+        </div>
+    </div>
+
+</body>
+</html>
+
+<script type="text/javascript" src="../../../libs/js/vue.js"></script>
+<script type="text/javascript">
+    /*
+    * 我们可以把一个数组传给 v-bind:class ，以应用一个 class 列表：
+    * */
+    var app1 = new Vue({
+        el:'#app1',
+        data: {
+            activeClass: 'active',
+            errorClass: 'text-danger'
+        }
+    });
+
+
+    /*
+    * 如果你也想根据条件切换列表中的 class ，可以用三元表达式：
+    * */
+    var app2 = new Vue({
+        el:'#app2',
+        data: {
+            isActive: true,
+            activeClass:'active',
+            errorClass:'text-danger'
+        }
+    });
+
+</script>

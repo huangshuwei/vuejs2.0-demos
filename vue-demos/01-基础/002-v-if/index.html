@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-if</title>
+</head>
+<body>
+    <div id="app">
+        <p v-if="seen">v-if 条件判断</p>
+    </div>
+</body>
+</html>
+<script type="text/javascript" src="../../../libs/js/vue.js"></script>
+<script type="text/javascript">
+    var app = new Vue({
+        el:'#app',
+        data:{
+            seen:false
+        }
+    })
+</script>

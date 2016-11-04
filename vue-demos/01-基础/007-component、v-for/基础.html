@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>component</title>
+</head>
+<body>
+<div id="app">
+    <ol>
+        <todo-item v-for="todo3 in todos" v-bind:propdata="todo3"></todo-item>
+    </ol>
+</div>
+</body>
+</html>
+<script type="text/javascript" src="../../../libs/js/vue.js"></script>
+<script type="text/javascript">
+    /*
+    * 通过组件的props属性将组件和数据解耦
+    * v-bind后的key == 组件props
+    * v-bind后的value 即代表组件props的值
+    * */
+
+
+    Vue.component('todo-item', {
+        props: ['propdata'],
+        template: '<li>{{ propdata.text }}</li>'
+    })
+    var app = new Vue({
+        el: '#app',
+        data: {
+            todos: [
+                {text: 'Learn JavaScript'},
+                {text: 'Learn Vue'},
+                {text: 'Build something awesome'}
+            ]
+        }
+    })
+</script>

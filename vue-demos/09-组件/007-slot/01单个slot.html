@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>单个slot</title>
+</head>
+<body>
+<div id="app1">
+    <div>
+        <h1>I'm the parent title</h1>
+        <child-component>
+            <p>This is some original content</p>
+            <p>This is some more original content</p>
+        </child-component>
+    </div>
+</div>
+<hr>
+<div id="app2">
+    <div>
+        <h1>I'm the parent title</h1>
+        <child-component>
+
+        </child-component>
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript" src="../../../libs/js/vue.js"></script>
+<script type="text/javascript">
+    /*
+    除非子组件模板包含至少一个 <slot> 插口，否则父组件的内容将会被丢弃。
+    当子组件模板只有一个没有属性的 slot 时，父组件整个内容片段将插入到 slot 所在的 DOM 位置，并替换掉 slot 标签本身。
+    */
+
+
+    var vm1 = new Vue({
+        el: '#app1',
+        components: {
+            'child-component': {
+                template: [
+                    '<div>',
+                    '<h2>I\'m the child title</h2>',
+                    '<slot>',
+                    '如果没有分发内容则显示我。',
+                    '</slot>',
+                    '</div>'
+                ].join('')
+            }
+        }
+    })
+
+    /*
+     注意：
+     最初在 <slot> 标签中的任何内容都被视为备用内容。
+     备用内容在子组件的作用域内编译，并且只有在宿主元素为空，
+     且没有要插入的内容时才显示备用内容！！
+     */
+
+    var vm2 = new Vue({
+        el: '#app2',
+        components: {
+            'child-component': {
+                template: [
+                    '<div>',
+                    '<h2>I\'m the child title</h2>',
+                    '<slot>',
+                    '如果没有分发内容则显示我。',
+                    '</slot>',
+                    '</div>'
+                ].join('')
+            }
+        }
+    })
+</script>

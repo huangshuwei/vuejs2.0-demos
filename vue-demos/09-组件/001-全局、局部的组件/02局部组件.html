@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>局部组件</title>
+</head>
+<body>
+<div id="app">
+    <simple-component></simple-component>
+</div>
+</body>
+</html>
+<script type="text/javascript" src="../../../libs/js/vue.js"></script>
+<script type="text/javascript">
+
+
+    // 注册局部组件
+    var vm = new Vue({
+        el: '#app',
+        components: {
+            'simple-component': {
+                template: '<p>this is a simple component</p>'
+            }
+        }
+    })
+
+    /*
+     当 ref 和 v-for 一起使用时， ref 是一个数组或对象，包含相应的子组件。
+
+     $refs 只在组件渲染完成后才填充，并且它是非响应式的。
+     它仅仅作为一个直接访问子组件的应急方案——应当避免在模版或计算属性中使用 $refs 。
+     */
+</script>

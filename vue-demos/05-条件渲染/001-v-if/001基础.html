@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-if</title>
+</head>
+<body>
+<div id="app">
+
+    <p v-if="ok">you want to see me</p>
+    <p v-else>you don't want to see me</p>
+</div>
+</body>
+</html>
+
+<script type="text/javascript" src="../../../libs/js/vue.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            ok:false
+        }
+    })
+
+</script>
+

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>子组件向父组件传递数据</title>
+</head>
+<body>
+<div id="app">
+    <p>{{ total }}</p>
+    <button-counter v-on:on-increment="incrementTotal"></button-counter>
+    <button-counter v-on:on-increment="incrementTotal"></button-counter>
+</div>
+</body>
+</html>
+<script type="text/javascript" src="../../../libs/js/vue.js"></script>
+<script type="text/javascript">
+
+    /*  子组件向父组件传递数据
+
+     1、使用 $on(eventName) 监听事件
+     2、使用 $emit(eventName) 触发事件
+
+     Note that Vue’s event system is separate from the browser’s EventTarget API.
+     Though they work similarly, $on and $emit are not aliases for addEventListener and dispatchEvent.
+
+     */
+
+    /*
+    * 子组件像父组件解耦的理解：
+    * 子组件不是直接通过$emit('incrementTotal')，而是通过触发子组件绑定的名称on-increment触发的！
+    * */
+
+    Vue.component('button-counter', {
+        template: '<button v-on:click="increment">{{ counter }}</button>',
+        data: function () {
+            return {
+                counter: 0
+            }
+        },
+        methods: {
+            increment: function () {
+                this.counter += 1
+                this.$emit('on-increment')
+            }
+        },
+    })
+    new Vue({
+        el: '#app',
+        data: {
+            total: 0
+        },
+        methods: {
+            incrementTotal: function () {
+                this.total += 1
+            }
+        }
+    })
+
+</script>

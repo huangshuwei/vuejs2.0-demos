@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义watch</title>
+</head>
+<body>
+<div id="app">
+    <p>
+        Ask a yes/no question:
+        <input v-model="question">
+    </p>
+    <p>{{ answer }}</p>
+</div>
+</body>
+</html>
+<!-- Since there is already a rich ecosystem of ajax libraries    -->
+<!-- and collections of general-purpose utility methods, Vue core -->
+<!-- is able to remain small by not reinventing them. This also   -->
+<!-- gives you the freedom to just use what you're familiar with. -->
+<script type="text/javascript" src="../../../libs/js/vue.js"></script>
+<script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
+<script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script>
+<script type="text/javascript">
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            question: '',
+            answer: 'I cannot give you an answer until you ask a question!',
+
+        },
+        watch: {
+            question: function (newQuestion) {
+                this.answer = 'waiting for you to stop typing...';
+                this.getAnswer();
+            }
+        },
+        methods: {
+            getAnswer: _.debounce(function () {
+                var vm = this;
+                if (this.question.indexOf('?') === -1) {
+                    vm.answer = 'Questions usually contain a question mark. ;-)'
+                    return
+                }
+
+                vm.answer = 'Thinking...';
+                axios.get('https://yesno.wtf/api')
+                        .then(function (response) {
+                            vm.answer = _.capitalize(response.data.answer)
+                        })
+                        .catch(function (error) {
+                            vm.answer = 'Error! Could not reach the API. ' + error
+                        })
+
+            }, 1000)
+        }
+
+
+    })
+
+</script>
