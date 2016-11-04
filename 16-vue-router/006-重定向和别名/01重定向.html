@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="app">
+    <p>
+        <router-link to="/a">重定向到其他路由</router-link>
+    </p>
+    <p>
+        <router-link to="/c">重定向的目标也可以是一个命名的路由</router-link>
+    </p>
+    <p>
+        <router-link to="/e">重定向返回一个方法的结果</router-link>
+    </p>
+    <router-view></router-view>
+</div>
+
+<hr>
+<!-------------------------------下面是说明------------------------------------>
+
+
+</body>
+</html>
+<script type="text/javascript" src="../../libs/js/vue.js"></script>
+<script type="text/javascript" src="../../libs/js/vue-router2.0.0.js"></script>
+<script type="text/javascript">
+
+
+    const BRouter = {
+        template: '<div>已经重定向到了b</div>'
+    }
+
+    const DRouter = {
+        template: '<div>已经重定向到了d</div>'
+    }
+
+    const router = new VueRouter({
+        routes: [
+            // 重定向到其他路由
+            {path: '/a', redirect: '/b'},
+            {path: '/b', component: BRouter},
+
+            // 重定向的目标也可以是一个命名的路由
+            {path: '/c', redirect: {name: 'user1'}},
+            {path: '/d', name: 'user1', component: DRouter},
+
+            // 重定向返回一个方法的结果
+            {
+                path: '/e',
+                redirect: function (to) {
+                    //const { hash, params, query } = to;
+                    return { path: '/a', query: null }
+                }
+            }
+        ]
+    })
+
+    const app = new Vue({
+        router: router
+    }).$mount('#app')
+
+</script>

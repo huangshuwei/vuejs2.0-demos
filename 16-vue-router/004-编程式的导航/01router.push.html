@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="app">
+    <div>
+        <button @click="linkToregister">register</button>
+        <button v-on:click="linkToHome">home</button>
+        <button @click="linkToHomeDetail">home detail</button>
+
+    </div>
+    <br/>
+    <router-view></router-view>
+</div>
+
+<hr>
+<!-------------------------------下面是说明------------------------------------>
+
+<p>想要导航到不同的 URL，则使用 router.push 方法。</p>
+<p>这个方法会向 history 栈添加一个新的记录，所以，当用户点击浏览器后退按钮时，则回到之前的 URL。</p>
+
+<p>当你点击 &lt;router-link&gt; 时，这个方法会在内部调用，所以说，点击 &lt;router-link :to="..."&gt;等同于调用 router.push(...)。</p>
+
+<p>// 字符串</p>
+<p>router.push('home')</p>
+
+<p>// 对象</p>
+<p>router.push({ path: 'home' })</p>
+
+<p>// 命名的路由</p>
+<p>router.push({ name: 'user', params: { userId: 123 }})</p>
+
+<p>// 带查询参数，变成 /register?plan=private</p>
+<p>router.push({ path: 'register', query: { plan: 'private' }})</p>
+
+</body>
+</html>
+<script type="text/javascript" src="../../libs/js/vue.js"></script>
+<script type="text/javascript" src="../../libs/js/vue-router2.0.0.js"></script>
+<script type="text/javascript">
+
+
+    const Common = {
+        template: '<div>{{ $route.params.id }}</div>'
+    }
+
+    const Detail = {
+        template: '<div>{{ $route.params.id }} detail</div>'
+    }
+
+    const router = new VueRouter({
+        routes: [
+            {path: '/:id', component: Common},
+            {path: '/:id/detail', component: Detail}
+        ]
+    })
+
+    const app = new Vue({
+        router: router,
+        methods: {
+            linkToregister: function () {
+                router.push('/register')
+            },
+            linkToHome: function () {
+                router.push({path: '/home'})
+            },
+            linkToHomeDetail: function () {
+                router.push({path: '/home/detail', query: {id: '12212'}})
+            }
+        }
+    }).$mount('#app')
+
+
+</script>

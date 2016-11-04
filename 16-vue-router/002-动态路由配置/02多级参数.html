@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态路由配置</title>
+</head>
+<body>
+<div id="app">
+    <p>
+        <router-link to="/foo/user/1">Go to Foo</router-link>
+        <router-link to="/bar/user/2">Go to Bar</router-link>
+    </p>
+    <router-view></router-view>
+</div>
+<hr>
+<!-------------------------------下面是说明------------------------------------>
+<p>路由参数很灵活可以根据业务需求配置</p>
+
+</body>
+</html>
+<script type="text/javascript" src="../../libs/js/vue.js"></script>
+<script type="text/javascript" src="../../libs/js/vue-router2.0.0.js"></script>
+<script type="text/javascript">
+
+
+    const User = {
+        template: '<div>User {{ $route.params.id }}-{{ $route.params.name }}</div>'
+    }
+
+    const router = new VueRouter({
+        routes: [
+            // 动态路径参数 以冒号开头
+            {path: '/:id/user/:name', component: User}
+        ]
+    })
+
+    const app = new Vue({
+        router: router
+    }).$mount('#app')
+</script>

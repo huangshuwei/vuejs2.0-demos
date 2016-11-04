@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态路由配置</title>
+</head>
+<body>
+<div id="app">
+    <p>
+        <router-link to="/foo">Go to Foo</router-link>
+        <router-link to="/bar">Go to Bar</router-link>
+    </p>
+    <router-view></router-view>
+</div>
+
+<hr>
+<!-------------------------------下面是说明------------------------------------>
+<p>一个『路径参数』使用冒号 : 标记。当匹配到一个路由时，参数值会被设置到 this.$route.params，可以在每个组件内使用。</p>
+<p>于是，我们可以更新 User 的模板，输出当前用户的 ID</p>
+
+</body>
+</html>
+<script type="text/javascript" src="../../libs/js/vue.js"></script>
+<script type="text/javascript" src="../../libs/js/vue-router2.0.0.js"></script>
+<script type="text/javascript">
+
+
+    const User = {
+        template: '<div>User {{ $route.params.id }}</div>' // $route.params 后的key值要和路由配置'冒号'后的保持一致
+    }
+
+    const router = new VueRouter({
+        routes: [
+            // 动态路径参数 以冒号开头
+            {path: '/:id', component: User}  // 冒号后的标识可以随便配置
+        ]
+    })
+
+    const app = new Vue({
+        router: router
+    }).$mount('#app')
+
+</script>

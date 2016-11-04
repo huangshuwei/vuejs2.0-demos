@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="app">
+    <p>
+        <router-link to="/user/a">跳转到a</router-link>
+        <router-link to="/user/b">发现是b不跳转</router-link>
+        <router-link to="/user/c">发现是c跳转到d</router-link>
+    </p>
+    <router-view></router-view>
+</div>
+
+<hr>
+<!-------------------------------下面是说明------------------------------------>
+<p>路由独享钩子，偶尔触发beforeEnter方法</p>
+</body>
+</html>
+<script type="text/javascript" src="../../libs/js/vue.js"></script>
+<script type="text/javascript" src="../../libs/js/vue-router2.0.0.js"></script>
+<script type="text/javascript">
+
+
+    const User = {
+        template: '<div>当前是 {{ $route.params.id }} 路由</div>'
+    }
+
+
+    const Default = {
+        template: '<div>这是默认路由</div>'
+    }
+
+
+    const router = new VueRouter({
+        routes: [
+            {
+                path: '/user/:id',
+                component: User,
+                beforeEnter:function (to, from, next) {
+                    console.log(to.path)
+                    if (to.path === '/user/c'){
+                        next({path:'/user/a'})
+                    }else{
+                        next();
+                    }
+                }
+            },
+            {path: '/', component: Default}
+
+        ]
+    })
+
+    const app = new Vue({
+        router: router
+    }).$mount('#app')
+
+</script>

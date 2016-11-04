@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="app">
+    <p>
+        <router-link to="/a">显示的路由是b ，但内容名是路由A的</router-link>
+    </p>
+    <router-view></router-view>
+</div>
+
+<hr>
+<!-------------------------------下面是说明------------------------------------>
+<p>『重定向』的意思是，当用户访问 /a时，URL 将会被替换成 /b，然后匹配路由为 /b，那么『别名』又是什么呢？</p>
+
+<p>/a 的别名是 /b，意味着，当用户访问 /b 时，URL 会保持为 /b，但是路由匹配则为 /a，就像用户访问 /a 一样。</p>
+
+</body>
+</html>
+<script type="text/javascript" src="../../libs/js/vue.js"></script>
+<script type="text/javascript" src="../../libs/js/vue-router2.0.0.js"></script>
+<script type="text/javascript">
+
+
+    const ARouter = {
+        template: '<div>这是a的路由</div>'
+    }
+
+
+    const router = new VueRouter({
+        routes: [
+            // 显示的路由是b ，但内容名是路由A的
+            { path: '/a', component: ARouter, alias: '/b' }
+        ]
+    })
+
+    const app = new Vue({
+        router: router
+    }).$mount('#app')
+
+</script>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态路由配置</title>
+</head>
+<body>
+<div id="app">
+    <p>
+        <router-link to="/foo">Go to Foo</router-link>
+        <router-link to="/bar">Go to Bar</router-link>
+    </p>
+    <router-view></router-view>
+</div>
+
+<hr>
+
+
+</body>
+</html>
+<script type="text/javascript" src="../../libs/js/vue.js"></script>
+<script type="text/javascript" src="../../libs/js/vue-router2.0.0.js"></script>
+<script type="text/javascript">
+
+
+    const User = {
+        template: '<div>User {{ $route.params.id }}</div>'
+    }
+
+
+    const router = new VueRouter({
+        routes: [
+            {path: '/', component: {
+                template: '<div>这是默认视图</div>'
+            }},
+            {path: '/:id', component: User}
+        ]
+    })
+
+    const app = new Vue({
+        router: router
+    }).$mount('#app')
+
+</script>

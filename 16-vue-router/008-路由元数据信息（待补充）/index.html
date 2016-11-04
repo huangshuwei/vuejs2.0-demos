@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <router-link to="/parent">跳转到 /foo</router-link>
+    <router-link to="/parent/child">跳转到 /foo/bar</router-link>
+    <router-view></router-view>
+</div>
+</body>
+</html>
+<script type="text/javascript" src="../../libs/js/vue.js"></script>
+<script type="text/javascript" src="../../libs/js/vue-router2.0.0.js"></script>
+<script type="text/javascript">
+    const Parent = {
+        //template: '<div>{{ $route.params.id }}</div>'
+        template: [
+            '<div>',
+            '<h2>这是父路由</h2>',
+            '<router-view></router-view>',
+            '</div>',
+        ].join('')
+    }
+
+
+    const Child = {
+        template: '<div>当前是子路由</div>'
+    }
+
+
+    const router = new VueRouter({
+        routes: [
+            {
+                path: '/parent',
+                component: Parent,
+                children: [
+                    {
+                        path: 'child',
+                        component: Child,
+                        // a meta field
+                        meta: { requiresAuth: true }
+                    }
+                ]
+            }
+        ]
+    })
+
+    const app = new Vue({
+        router: router
+    }).$mount('#app')
+
+
+    router.beforeEach(function (to, from, next) {
+
+        if (to.matched.some(record => record.meta.requiresAuth)) {
+            // this route requires auth, check if logged in
+            // if not, redirect to login page.
+            if (!auth.loggedIn()) {
+                next({
+                    path: '/login',
+                    query: { redirect: to.fullPath }
+                })
+            } else {
+                next()
+            }
+        } else {
+            next() // 确保一定要调用 next()
+        }
+    })
+</script>

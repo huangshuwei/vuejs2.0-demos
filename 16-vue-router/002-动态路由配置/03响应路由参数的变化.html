@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态路由配置</title>
+</head>
+<body>
+<div id="app">
+    <p>
+        <router-link to="/foo/user/1">Go to Foo</router-link>
+        <router-link to="/bar/user/2">Go to Bar</router-link>
+    </p>
+    <router-view></router-view>
+</div>
+<hr>
+<!-------------------------------下面是说明------------------------------------>
+
+<p>提醒一下，当使用路由参数时，例如从 /foo/user/1 导航到 /bar/user/2，原来的组件实例会被复用。</p>
+<p>因为两个路由都渲染同个组件，比起销毁再创建，复用则显得更加高效。</p>
+<p>不过，这也意味着组件的生命周期钩子不会再被调用。</p>
+
+<p>复用组件时，想对路由参数的变化作出响应的话，你可以简单地 watch（监测变化） $route 对象</p>
+
+</body>
+</html>
+<script type="text/javascript" src="../../libs/js/vue.js"></script>
+<script type="text/javascript" src="../../libs/js/vue-router2.0.0.js"></script>
+<script type="text/javascript">
+
+
+    const User = {
+        template: '<div>/{{ $route.params.id }}/User/{{ $route.params.name }}</div>',
+        watch: {
+            '$route': function (to, from) {
+                // 对路由变化作出响应...
+                alert('将要切换到 ' + to.path);
+
+            }
+        }
+    }
+
+    const router = new VueRouter({
+        routes: [
+            // 动态路径参数 以冒号开头
+            {path: '/:id/user/:name', component: User}
+        ]
+    })
+
+    const app = new Vue({
+        router: router
+    }).$mount('#app')
+</script>

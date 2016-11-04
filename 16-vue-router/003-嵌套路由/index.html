@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>嵌套路由</title>
+</head>
+<body>
+<div id="app">
+    <p>
+        <router-link to="/foo">Go to Foo</router-link>
+        <router-link to="/bar">Go to Bar</router-link>
+    </p>
+    <p>
+        <router-link to="/foo/profile">Go to Foo/profile</router-link>
+        <router-link to="/bar/posts/1">Go to Bar/posts/1</router-link>
+    </p>
+    <router-view></router-view>
+</div>
+
+<hr>
+<!-------------------------------下面是说明------------------------------------>
+
+<p>这里的 &lt;router-view&gt; 是最顶层的出口，渲染最高级路由匹配到的组件。</p>
+<p>同样地，一个被渲染组件同样可以包含自己的嵌套 &lt;router-view&gt;。</p>
+<p> 例如，在 User 组件的模板添加一个 &lt;router-view&gt;
+
+<br/><br/>
+<p>要注意，以 / 开头的嵌套路径会被当作根路径。 这让你充分的使用嵌套组件而无须设置嵌套的路径。</p>
+<p>你会发现，children 配置就是像 routes 配置一样的路由配置数组，所以呢，你可以嵌套多层路由。</p>
+<p>此时，基于上面的配置，当你访问 /user/foo 时，User 的出口是不会渲染任何东西，这是因为没有匹配到合适的子路由。如果你想要渲染点什么，可以提供一个 空的 子路由</p>
+</body>
+</html>
+<script type="text/javascript" src="../../libs/js/vue.js"></script>
+<script type="text/javascript" src="../../libs/js/vue-router2.0.0.js"></script>
+<script type="text/javascript">
+    const User = {
+        //template: '<div>{{ $route.params.id }}</div>'
+        template: [
+            '<div class="user">',
+            '<h2>User {{ $route.params.id }}</h2>',
+            '<router-view></router-view>',
+            '</div>',
+        ].join('')
+    }
+
+    const UserProfile = {
+        template: '<div>这是 profile</div>'
+    }
+
+    const UserPosts = {
+        template: '<div>这是 {{ $route.params.name }}</div>'
+    }
+
+    const router = new VueRouter({
+        routes: [
+            {
+                path: '/:id',
+                component: User,
+                children: [
+                    {
+                        // 当 /:id/profile 匹配成功，
+                        // UserProfile 会被渲染在 User 的 <router-view> 中
+                        path: 'profile',
+                        component: UserProfile
+                    },
+                    {
+                        // 当 /:id/posts/:name 匹配成功
+                        // UserPosts 会被渲染在 User 的 <router-view> 中
+                        path: 'posts/:name', // 还可以创建路由规则
+                        component: UserPosts
+                    }
+                ]
+            }
+        ]
+    })
+
+
+    const app = new Vue({
+        router: router
+    }).$mount('#app')
+</script>
