@@ -6,20 +6,18 @@
 </head>
 <body>
 <div id="app">
-    <p>{{message}}</p>
+    <p v-if="seen">v-if 条件判断</p>
 </div>
 </body>
 </html>
 <script type="text/javascript" src="../../../libs/js/vue.js"></script>
 <script type="text/javascript">
 
-    // 事实上，data属性可以是带有返回值函数（在组件中data属性必须是函数）
+
     var app = new Vue({
         el: '#app',
-        data: function () {
-            return {
-                message: 'data属性可以是带有返回值函数'
-            }
+        data: {
+            seen: true
         }
     })
 </script>
