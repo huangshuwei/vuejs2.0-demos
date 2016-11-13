@@ -35,9 +35,11 @@ const mutations = {
         state.checkoutStatus = 'successful'
     },
 
-    [types.CHECKOUT_FAILURE] (state,{saveCartItems}){
+    [types.CHECKOUT_FAILURE] (state,{savedCartItems}){
         // rollback to the cart saved before sending the request
-        state.added = saveCartItems
+        console.log('saveCartItems :'+savedCartItems);
+
+        state.added = savedCartItems
         state.checkoutStatus = 'failed'
     }
 }

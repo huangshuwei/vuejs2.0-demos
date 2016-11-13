@@ -12,7 +12,10 @@ export const addToCart = ({commit},product) =>{
 }
 
 export const checkout = ({commit,state},products) =>{
-    const saveCartItems = [...state.cart.added]
+    const savedCartItems = [...state.cart.added]
+
+    console.log('savedCartItems:');
+    console.log(savedCartItems);
 
     commit(types.CHECKOUT_REQUEST)
 
