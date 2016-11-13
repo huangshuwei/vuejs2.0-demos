@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app1">
+        {{time|time-filter}}
+    </div>
+<br>
+    <!-------------------------------下面是说明------------------------------------>
+    <p>注册或获取全局过滤器。</p>
+    <p>所有的子组件都可以直接使用</p>
+<hr>
+</body>
+</html>
+<script type="text/javascript" src="../../../libs/js/vue.js"></script>
+<script type="text/javascript">
+
+    // 注册全局过滤器
+    Vue.filter('time-filter', timestamp => {
+        console.log('timestamp:'+timestamp);
+        return new Date(timestamp).toLocaleTimeString()
+    })
+
+    var vm1 = new Vue({
+        el:'#app1',
+        data:{
+            time:Date.now() - 59999
+        }
+    })
+
+
+</script>
