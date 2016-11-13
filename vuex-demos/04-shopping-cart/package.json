@@ -1,0 +1,8 @@
+{
+  "description": "counter",
+  "scripts": {
+    "build": "webpack  --profile --progress --colors --display-error-details",
+    "dev": "webpack --watch --profile --progress --colors --display-error-details",
+    "hrm": "webpack-dev-server"
+  }
+}
