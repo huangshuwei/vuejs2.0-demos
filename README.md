@@ -1,8 +1,8 @@
-# 介绍
+## 介绍
 
 这是vuejs2.0 demos,共包含三部分 vue-demos、vue-router-demos和vuex-demos
 
-# 如何打开实例
+## 运行实例
 
 首先将这个项目克隆到你的本地
 
