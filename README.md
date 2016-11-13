@@ -99,7 +99,7 @@ $ npm run hrm
 ## vuex-demos
 
 - [01-基础](https://github.com/huangshuwei/vuejs2.0-demos/tree/master/vuex-demos/01-%E5%9F%BA%E7%A1%80)
-- [02-counter](https://github.com/huangshuwei/vuejs2.0-demos/tree/master/vuex-demos/02-counter)
-- [03-chat](https://github.com/huangshuwei/vuejs2.0-demos/tree/master/vuex-demos/03-chat)
-
+- [02-计算实例](https://github.com/huangshuwei/vuejs2.0-demos/tree/master/vuex-demos/02-counter)
+- [03-聊天室实例](https://github.com/huangshuwei/vuejs2.0-demos/tree/master/vuex-demos/03-chat)
+- [04-购物车实例](https://github.com/huangshuwei/vuejs2.0-demos/tree/master/vuex-demos/04-shopping-cart)
 
