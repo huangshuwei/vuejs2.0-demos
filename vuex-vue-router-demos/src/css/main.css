@@ -1,0 +1,59 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption, tbody, tfoot {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+}
+
+
+.topbar {
+    position: relative;
+    height: 40px;
+    line-height:40px;
+    color: #b0b0b0;
+    background: #333;
+}
+
+ul.menu {
+    list-style-type: none;
+    padding: 0;
+    overflow: hidden;
+}
+
+ul.menu li {
+    float: left;
+    display: inline-block;
+    text-align: center;
+}
+
+
+.router-link-active{
+    color: #fff !important;
+}
+
+
+ul.menu li a {
+    display: inline-block;
+    font-size: 16px;
+    text-decoration: none;
+    width:120px;
+    color: #b0b0b0;
+    text-decoration: none;
+}
+
+
+ul.menu li a:hover{
+    color: #ffffff;
+}
+
+.hasProduct{
+    color: orange;
+    font-weight:bold;
+}
+
+#container{
+    width:1100px;
+    margin:0 auto;
+    padding: 20px;
+}

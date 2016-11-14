@@ -1,6 +1,6 @@
 ## 介绍
 
-这是vuejs2.0 demos,共包含三部分 vue-demos、vue-router-demos和vuex-demos
+这是vuejs2.0 demos,共包含四部分 vue-demos、vue-router-demos、vuex-demos 和 vuex-vue-router-demos
 
 ## 运行实例
 
@@ -102,4 +102,8 @@ $ npm run hrm
 - [02-计算实例](https://github.com/huangshuwei/vuejs2.0-demos/tree/master/vuex-demos/02-counter)
 - [03-聊天室实例](https://github.com/huangshuwei/vuejs2.0-demos/tree/master/vuex-demos/03-chat)
 - [04-购物车实例](https://github.com/huangshuwei/vuejs2.0-demos/tree/master/vuex-demos/04-shopping-cart)
+
+## vuex-vue-router-demos
+
+- [综合实例](https://github.com/huangshuwei/vuejs2.0-demos/tree/master/vuex-vue-router-demos)
 
