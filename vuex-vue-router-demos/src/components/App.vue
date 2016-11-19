@@ -17,6 +17,8 @@
         <div id="container">
             <router-view></router-view>
         </div>
+
+        <Loading></Loading>
     </div>
 
 </template>
@@ -24,14 +26,22 @@
 <script>
     import '../css/main.css'
 
+    import Loading from './common/Loading.vue'
+
     export default {
+        components:{
+            Loading
+        },
         data(){
             return {
                 cartProductCount: 1,
                 cartClass: 1 > 0 ? 'hasProduct' : ''
             }
         },
-        created:function () {
+        methods: {
+
+        },
+        created: function () {
 
         }
     }

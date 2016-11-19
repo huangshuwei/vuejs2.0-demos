@@ -8,6 +8,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 
 
 .topbar {
+
     position: relative;
     height: 40px;
     line-height:40px;
@@ -16,6 +17,8 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 }
 
 ul.menu {
+    width:1100px;
+    margin:0 auto;
     list-style-type: none;
     padding: 0;
     overflow: hidden;
@@ -24,7 +27,6 @@ ul.menu {
 ul.menu li {
     float: left;
     display: inline-block;
-    text-align: center;
 }
 
 
@@ -37,7 +39,7 @@ ul.menu li a {
     display: inline-block;
     font-size: 16px;
     text-decoration: none;
-    width:120px;
+    width:180px;
     color: #b0b0b0;
     text-decoration: none;
 }
@@ -56,4 +58,32 @@ ul.menu li a:hover{
     width:1100px;
     margin:0 auto;
     padding: 20px;
+}
+
+.table{
+    width:100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+
+.table th {
+    font-weight: bold;
+}
+
+.table td, .table th {
+    padding: .75rem;
+    vertical-align: top;
+    border-top: 1px solid #eceeef;
+    text-align: left;
+
+}
+
+.table td{
+    font:normal 16px 'Courier New','Georgia', serif;
+    color: #373a3c;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0,0,0,.05);
 }

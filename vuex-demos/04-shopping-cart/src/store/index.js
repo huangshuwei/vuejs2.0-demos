@@ -19,5 +19,6 @@ export default new Vuex.Store({
         products
     },
     strict: true,
-    plugins: __DEV__ ? [createLogger()] : []
+    plugins: __DEV__ ? [createLogger()] : [],
+    strict :true
 })

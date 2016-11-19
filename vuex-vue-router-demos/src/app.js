@@ -6,7 +6,7 @@ import router from './router'
 
 new Vue({
     el:'#app',
-   /* store,*/
+    store,
     router,
     render:h => h(App)
 })
