@@ -15,7 +15,6 @@ export default new VueRouter({
     // 改成动态路由
     routes: [
         {path: '/', component: defaultRouter},
-        {path: '/home', component: home},
         {path: '/product', component: product},
         {path: '/cart', component: cart}
     ]

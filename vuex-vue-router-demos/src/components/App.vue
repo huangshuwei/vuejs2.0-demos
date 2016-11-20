@@ -3,7 +3,7 @@
         <div class="topbar">
             <ul class="menu">
                 <li>
-                    <router-link to="/home">首页</router-link>
+                    <router-link to="/">首页</router-link>
                 </li>
                 <li>
                     <router-link to="/product">商品</router-link>
@@ -18,6 +18,7 @@
             <router-view></router-view>
         </div>
 
+        <!--loading-->
         <Loading></Loading>
     </div>
 

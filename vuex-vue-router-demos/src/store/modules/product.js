@@ -12,6 +12,10 @@ const state = {
 const actions = {
     product_GetData (context){
 
+        context.commit(types.COMM_SET_LOADING,{
+            isLoading:true
+        })
+
         setTimeout(function () {
             mockServer.getProducts(products=>{
 

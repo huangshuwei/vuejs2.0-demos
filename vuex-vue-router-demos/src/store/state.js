@@ -2,7 +2,7 @@
 export default  {
     // 加载状态
     loading: {
-        isLoading: true,
+        isLoading: false,
         loadingText: '加载中...',
         isError: false,
         errorText: '请求失败...'
