@@ -14,10 +14,11 @@ vue-demos 和 vue-router-demos 找到对应的实例，在浏览器打开即可�
 
 vuex-demos 实例是和 webpack 结合使用的，需要进行以下安装
 
-全局安装 webpack（已安装跳过）
+全局安装 webpack
 
 ```
 $ npm install webpack -g
+$ npm install webpack-dev-server -g
 ```
 
 项目中安装
