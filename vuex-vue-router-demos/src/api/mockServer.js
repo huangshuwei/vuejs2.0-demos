@@ -10,7 +10,8 @@ const productDatas = [
 export default {
     getProducts (cb){
 
-        if (Math.random() > 0.3) {
+        if (Math.random() > 0.1) {
+            alert(1);
             cb(productDatas)
         } else {
             cb(null)
