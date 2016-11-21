@@ -3,13 +3,13 @@
         <div class="topbar">
             <ul class="menu">
                 <li>
-                    <router-link to="/">首页</router-link>
+                    <router-link to="/Home">首页</router-link>
                 </li>
                 <li>
-                    <router-link to="/product">商品</router-link>
+                    <router-link to="/Product">商品</router-link>
                 </li>
                 <li>
-                    <router-link to="/cart">购物车<span :class="cartClass">（{{cartProductCount}}）</span></router-link>
+                    <router-link to="/Cart">购物车<span :class="cartClass">（{{cartProductCount}}）</span></router-link>
                 </li>
             </ul>
 
