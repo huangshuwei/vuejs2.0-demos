@@ -10,6 +10,7 @@ const state = {
 // mutations
 const mutations = {
     [types.ADD_TO_CART] (state, {id}){
+        alert(1)
         state.lastCheckout = null;
 
         const record = state.added.find(p=>p.id === id)

@@ -1,6 +1,7 @@
 <template>
     <div>
-        <h1></h1>
+        <div class="tips">
+        </div>
         <div>
             <ul class="product">
                 <li v-for="item in productList">
@@ -16,7 +17,7 @@
                         </div>
 
                         <div class="p-btn">
-                            <a href="javascript:void(0);" :productId="item.id" class="btn-append"><b></b>加入购物车</a>
+                            <a href="javascript:void(0);" @click.stop.prevent="addToCart(item.id,$event)" class="btn-append"><b></b>加入购物车</a>
                         </div>
                     </div>
                 </li>
@@ -138,9 +139,11 @@
     import {mapActions, mapState} from 'vuex'
 
     export default {
+        name:'product',
         computed: {
             ...mapState({
-                productList: state => state.product.productList
+                productList: state => state.product.productList,
+                cartCount:state =>state.cart.products
             })
         },
         created () {
@@ -152,18 +155,36 @@
         methods: {
 
             ...mapActions([
-                'product_GetData'
+                'product_GetData',
+                'cart_Add'
             ]),
 
             // 动态的引入图片 参考: https://webpack.github.io/docs/context.html
             loadImage (path) {
                 return require('../imgs/'+path)
+            },
+
+            // 添加到购物车
+            addToCart (productId,event){
+
+                var product = this.productList.find(p=>p.id===productId)
+
+                if (product.stock >0){
+                    this.cart_Add({
+                        productId:productId
+                    })
+
+                    var currentCount = this.cartCount.find(p=>p.productId === productId).count
+
+                    $(".tips").removeClass('red').addClass('green').text(currentCount+' 个 '+product.title+' 已经加入购物车，快去看看吧')
+                }else{
+                    $(".tips").removeClass('green').addClass('red').text(product.title+' 已经没有啦，选其他产品吧')
+
+                    $(event.target).css('visibility','hidden')
+                }
+
             }
 
-        },
-        watch: {
-            // 如果路由有变化，会再次执行该方法
-            '$route': 'fetchData'
         }
     }
 </script>

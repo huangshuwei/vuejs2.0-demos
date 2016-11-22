@@ -1,16 +1,31 @@
-import * as types from '../mutation-types'
+import * as types from "../mutation-types";
 
 // state
-const state = {
+/*
+ sharp
+{
     count: 0,
-    productIds: []
+    products: [
+        {productId:1,count:2},
+        {productId:2,count:1},
+    ]
+}
+*/
+const state = {
+    totalCount: 0,
+    products: []
 }
 
 // action
 const actions = {
 
-    addCart (context, payload) {
+    // 加入购物车、减库存
+    cart_Add (context, payload) {
         context.commit(types.CART_ADD, {
+            productId: payload.productId
+        })
+
+        context.commit(types.PRODUCT_REDUCE, {
             productId: payload.productId
         })
     }
@@ -20,8 +35,22 @@ const actions = {
 // mutations
 const mutations = {
     [types.CART_ADD] (state, payload){
-        state.count++
-        state.productIds.push(payload.productId)
+        console.log('--state--');
+        console.log(state)
+        var record = state.products.find(p => p.productId === payload.productId)
+
+        state.totalCount++
+
+        // 此商品已经添加过
+        if (record) {
+            record.count ++
+        } else {
+            state.products.push({
+                productId:payload.productId,
+                count:1
+            })
+        }
+
     }
 }
 

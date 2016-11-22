@@ -83,6 +83,12 @@ var PATHS = {
      * node_modules path
      */
     node_modulesPath: path.resolve('../node_modules'),
+
+    /*
+     * public resource path
+     * （公共资源目录）
+     * */
+    libsPath: path.resolve(process.cwd(), '../libs')
 }
 
 
@@ -107,7 +113,8 @@ var resolve = {
      * （别名，引用时直接可以通过别名引用）
      * */
     alias: {
-        'vue$': 'vue/dist/vue'
+        'vue$': 'vue/dist/vue',
+        'jquery':path.join(PATHS.libsPath, "js/jquery.min"),
     }
 }
 
@@ -118,7 +125,7 @@ var resolve = {
 var entry = {
     app: './src/app.js',
     common: [
-        'vue','babel-polyfill','vuex'
+        'vue','babel-polyfill','vuex','vue-router', 'jquery'
     ],
 };
 
@@ -259,6 +266,17 @@ var plugins = [
     ),
 
     /*
+     *  Module (value) is loaded when the identifier (key) is used as free variable in a module
+     *  （如：使用jquery 可以直接使用符号 "$"）
+     * */
+    new webpack.ProvidePlugin({
+        $: "jquery",
+        jQuery: "jquery",
+        "window.jQuery": "jquery",
+        "_": "underscore"
+    }),
+
+    /*
      * Search for equal or similar files and deduplicate them in the output
      * （删除重复依赖的文件）
      */
@@ -362,7 +380,7 @@ if (devServer) {
                 new webpack.HotModuleReplacementPlugin({
                     multiStep: true
                 }),
-                new OpenBrowserPlugin({url: 'http://localhost:8030' + PATHS.publicPath + 'index.html'})
+                new OpenBrowserPlugin({url: 'http://localhost:8031' + PATHS.publicPath + 'index.html'})
             ],
             devServer: {
                 // Enable history API fallback so HTML5 History API based
@@ -386,7 +404,7 @@ if (devServer) {
                 // 0.0.0.0 is available to all network devices
                 // unlike default `localhost`.
                 host: "localhost", // Defaults to `localhost`   process.env.HOST
-                port: "8030",  // Defaults to 8080   process.env.PORT
+                port: "8031",  // Defaults to 8080   process.env.PORT
                 /*
                  *  代理访问
                  *  1、可以绕过同源策略 和 webpack '热更新'结合使用

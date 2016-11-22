@@ -87,3 +87,24 @@ ul.menu li a:hover{
 .table-striped tbody tr:nth-of-type(odd) {
     background-color: rgba(0,0,0,.05);
 }
+
+.tips{
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.red{
+    color:red !important;
+}
+
+
+.green{
+    color:green;
+}
+
+
+.orange{
+    color:orange;
+}

@@ -12,10 +12,19 @@
 
 <style>
     .loading{
-        width: 1100px;
-        margin: 0 auto;
+       /* width: 1100px;*/
+
         text-align: center;
-        z-index: 999;
+        -moz-box-shadow: 0 1px 10px #adabab;
+        -webkit-box-shadow: 0 1px 10px #adabab;
+        box-shadow: 0 1px 10px #adabab;
+        left: 50%;
+        top: 10%;
+        margin-right: 0;
+        margin-bottom: 0;
+        position: fixed;
+        border-style:solid;
+        background-color: #FFFFFF;
     }
     
     .error{

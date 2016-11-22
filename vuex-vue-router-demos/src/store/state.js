@@ -6,9 +6,10 @@ export default  {
         loadingText: '加载中...',
         isError: false,
         errorText: '请求失败...'
-    }
+    },
 
-    // 放置其他共公状态
+    // 购物车数量
+    cartCount:1
 }
 
 
