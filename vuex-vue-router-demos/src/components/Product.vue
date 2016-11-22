@@ -17,7 +17,7 @@
                         </div>
 
                         <div class="p-btn">
-                            <a href="javascript:void(0);" @click.stop.prevent="addToCart(item.id,$event)" class="btn-append"><b></b>加入购物车</a>
+                            <a :style="{visibility:item.stock <=0 ? 'hidden' : ''}" href="javascript:void(0);" @click.stop.prevent="addToCart(item.id,$event)" class="btn-append"><b></b>加入购物车</a>
                         </div>
                     </div>
                 </li>
@@ -169,19 +169,13 @@
 
                 var product = this.productList.find(p=>p.id===productId)
 
-                if (product.stock >0){
-                    this.cart_Add({
-                        productId:productId
-                    })
+                this.cart_Add({
+                    productId:productId
+                })
 
-                    var currentCount = this.cartCount.find(p=>p.productId === productId).count
+                var currentCount = this.cartCount.find(p=>p.productId === productId).count
 
-                    $(".tips").removeClass('red').addClass('green').text(currentCount+' 个 '+product.title+' 已经加入购物车，快去看看吧')
-                }else{
-                    $(".tips").removeClass('green').addClass('red').text(product.title+' 已经没有啦，选其他产品吧')
-
-                    $(event.target).css('visibility','hidden')
-                }
+                $(".tips").addClass('green').text(currentCount+' 个 '+product.title+' 已经加入购物车，快去结算吧')
 
             }
 
