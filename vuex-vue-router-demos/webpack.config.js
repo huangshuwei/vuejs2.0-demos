@@ -4,12 +4,6 @@ var path = require('path');
 var webpack = require('webpack');
 
 /*
- * verify config
- * （验证config文件是否正确）
- * */
-var validate = require('webpack-validator');
-
-/*
  * clean publishing directory
  * （清空发布目录）
  * */
@@ -359,6 +353,13 @@ var config = {
     module: {
         loaders: loaders
     },
+    vue:{ // 将 vue 组件里的css提到单独文件中
+        loaders: {
+            css: ExtractTextPlugin.extract("css"),
+            // you can also include <style lang="less"> or other langauges
+            less: ExtractTextPlugin.extract("css!less")
+        }
+    },
     resolve: resolve,
     plugins: plugins,
 
@@ -424,7 +425,7 @@ if (devServer) {
     );
 }
 
-module.exports = validate(config);
+module.exports = config;
 
 
 

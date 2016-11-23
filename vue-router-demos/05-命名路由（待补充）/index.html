@@ -7,6 +7,7 @@
 <body>
 <div id="app">
     <router-link to="/foo">Go to Foo</router-link>
+    <router-link to="{ name: 'test', params: { testId: 111 }}">Go to Test</router-link>
     <router-view></router-view>
 </div>
 
@@ -25,12 +26,21 @@
         template: '<div>User {{ $route.params.id }}</div>'
     }
 
+    const Test = {
+        template: '<div>Test {{ $route.params.Testid }}</div>'
+    }
+
     const router = new VueRouter({
         routes: [
             {
                 path: '/:id',
                 name: 'user1', // 名称标识
                 component: User
+            },
+            {
+                path: '/user/:id',
+                name: 'test',
+                component: Test
             }
         ]
     })

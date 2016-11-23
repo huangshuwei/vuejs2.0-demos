@@ -9,7 +9,7 @@
                         <div class="p-img">
                             <img :src="loadImage(item.img)" height="220" width="220"/></div>
                         <div class="p-name">
-                            {{item.title}}   {{item.color}}
+                            {{item.title}}   {{item.color}}  <br />剩余库存 {{item.stock}}
                         </div>
 
                         <div class="p-price">
