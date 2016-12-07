@@ -6,7 +6,7 @@
 </head>
 <body>
 <div id="app">
-    <template v-if="ok">
+    <template v-if="count > 0">
         <h1>you</h1>
         <p>want to</p>
         <p>see me</p>
@@ -25,7 +25,7 @@
     var vm = new Vue({
         el:'#app',
         data:{
-            ok:true
+            count:1
         }
     })
 

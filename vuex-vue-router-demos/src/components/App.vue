@@ -58,6 +58,8 @@
         methods: {
             // 购物车数量大于1，加粗效果
             cartClass () {
+                console.log('cartTotalCount2-------------');
+
                 return this.cartCount > 0 ? 'hasProduct' : ''
             }
         }

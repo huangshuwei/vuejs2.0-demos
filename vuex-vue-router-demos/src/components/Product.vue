@@ -9,7 +9,7 @@
                         <div class="p-img">
                             <img :src="loadImage(item.img)" height="220" width="220"/></div>
                         <div class="p-name">
-                            {{item.title}}   {{item.color}}  <br />剩余库存 {{item.stock}}
+                            {{item.title}} {{item.color}} <br/>剩余库存 {{item.stock}}
                         </div>
 
                         <div class="p-price">
@@ -17,12 +17,14 @@
                         </div>
 
                         <div class="p-btn">
-                            <a :style="{visibility:item.stock <=0 ? 'hidden' : ''}" href="javascript:void(0);" @click.stop.prevent="addToCart(item.id,$event)" class="btn-append"><b></b>加入购物车</a>
+                            <a :style="{visibility:item.stock <=0 ? 'hidden' : ''}" href="javascript:void(0);"
+                               @click.stop.prevent="addToCart(item.id,$event)" class="btn-append"><b></b>加入购物车</a>
                         </div>
                     </div>
                 </li>
 
             </ul>
+
 
         </div>
 
@@ -43,8 +45,7 @@
         text-align: -webkit-match-parent;
     }
 
-
-    li .item{
+    li .item {
         position: relative;
         width: 220px;
         padding: 20px;
@@ -54,19 +55,18 @@
         overflow: hidden;
     }
 
-
     li .item:hover {
-        z-index:2;
-        border:1px solid red;
+        z-index: 2;
+        border: 1px solid red;
     }
 
-    li .item .p-img{
+    li .item .p-img {
         width: 220px;
         margin: 0 auto;
         overflow: hidden;
     }
 
-    li .item .p-name{
+    li .item .p-name {
         height: 36px;
         line-height: 18px;
         margin: 5px 0;
@@ -74,28 +74,27 @@
         text-align: center;
     }
 
-    li .item .p-price{
+    li .item .p-price {
         width: 100%;
         margin: 5px 0 2px;
         overflow: hidden;
         text-align: center;
     }
 
-    .p-price strong{
+    .p-price strong {
         font-size: 14px;
         color: #d91f20;
         font-family: verdana;
         font-weight: 400;
     }
 
-    li .item .p-btn{
+    li .item .p-btn {
         font-size: 12px;
         margin: 10px 0 0;
         text-align: center;
     }
 
-
-    .p-btn .btn-append{
+    .p-btn .btn-append {
         display: inline-block;
         height: 28px;
         line-height: 28px;
@@ -110,13 +109,13 @@
         text-decoration: none;
     }
 
-    .p-btn .btn-append:hover{
+    .p-btn .btn-append:hover {
         background-color: #e4393c;
         border-color: #e4393c;
         color: #fff;
     }
 
-    .p-btn .btn-append b{
+    .p-btn .btn-append b {
         display: inline-block;
         height: 18px;
         width: 18px;
@@ -125,10 +124,10 @@
         background-repeat: no-repeat;
         overflow: hidden;
         vertical-align: middle;
-        background-image:url(../imgs/cart-icons.png);
+        background-image: url(../imgs/cart-icons.png);
     }
 
-    .p-btn .btn-append:hover b{
+    .p-btn .btn-append:hover b {
         background-position: -28px -57px;
     }
 
@@ -139,11 +138,11 @@
     import {mapActions, mapState} from 'vuex'
 
     export default {
-        name:'product',
+        name: 'product',
         computed: {
             ...mapState({
                 productList: state => state.product.productList,
-                cartCount:state =>state.cart.products
+                cartCount: state => state.cart.products
             })
         },
         created () {
@@ -161,22 +160,27 @@
 
             // 动态的引入图片 参考: https://webpack.github.io/docs/context.html
             loadImage (path) {
-                return require('../imgs/'+path)
+                return require('../imgs/' + path)
             },
 
             // 添加到购物车
-            addToCart (productId,event){
+            addToCart (productId, event){
 
-                var product = this.productList.find(p=>p.id===productId)
+                var product = this.productList.find(p => p.id === productId)
 
                 this.cart_Add({
-                    productId:productId
+                    productId: productId
                 })
 
-                var currentCount = this.cartCount.find(p=>p.productId === productId).count
+                var currentCount = this.cartCount.find(p => p.productId === productId).count
 
-                $(".tips").addClass('green').text(currentCount+' 个 '+product.title+' 已经加入购物车，快去结算吧')
+                $(".tips").addClass('green').text(currentCount + ' 个 ' + product.title + ' 已经加入购物车，快去结算吧')
 
+            },
+            watch:{
+                'productList':function (val) {
+                    alert(1)
+                }
             }
 
         }

@@ -381,7 +381,7 @@ if (devServer) {
                 new webpack.HotModuleReplacementPlugin({
                     multiStep: true
                 }),
-                new OpenBrowserPlugin({url: 'http://localhost:8031' + PATHS.publicPath + 'index.html'})
+                new OpenBrowserPlugin({url: 'http://localhost:8030' + PATHS.publicPath + 'index.html'})
             ],
             devServer: {
                 // Enable history API fallback so HTML5 History API based
@@ -405,7 +405,7 @@ if (devServer) {
                 // 0.0.0.0 is available to all network devices
                 // unlike default `localhost`.
                 host: "localhost", // Defaults to `localhost`   process.env.HOST
-                port: "8031",  // Defaults to 8080   process.env.PORT
+                port: "8030",  // Defaults to 8080   process.env.PORT
                 /*
                  *  代理访问
                  *  1、可以绕过同源策略 和 webpack '热更新'结合使用

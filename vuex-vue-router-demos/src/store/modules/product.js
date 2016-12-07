@@ -10,14 +10,11 @@ const state = {
 // action
 const actions = {
     product_GetData (context){
-
-        mockServer.getProducts(products => {
-            context.commit(types.PRODUCT_GET_DATA, {products})
-        })
-
-        /*    setTimeout(function () {
-
-         },1300)*/
+        setTimeout(function () {
+            mockServer.getProducts(products => {
+                context.commit(types.PRODUCT_GET_DATA, {products})
+            })
+        }, 2300)
     }
 }
 

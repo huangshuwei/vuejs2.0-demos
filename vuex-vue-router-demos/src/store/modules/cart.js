@@ -35,8 +35,7 @@ const actions = {
 // mutations
 const mutations = {
     [types.CART_ADD] (state, payload){
-        console.log('--state--');
-        console.log(state)
+
         var record = state.products.find(p => p.productId === payload.productId)
 
         state.totalCount++
